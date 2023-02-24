@@ -8,9 +8,16 @@ https://docs.djangoproject.com/en/4.1/howto/deployment/wsgi/
 """
 
 import os
+import sys
+
+path = os.path.expanduser('~/django_projects/stackoverflow_search')
+
+if path not in sys.path:
+    sys.path.insert(0, path)
+
+os.environ['DJANGO_SETTINGS_MODULE'] = 'stackoverflow_search.settings'
 
 from django.core.wsgi import get_wsgi_application
+from django.contrib.staticfiles.handlers import StaticFilesHandler
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'stackoverflow_search.settings')
-
-application = get_wsgi_application()
+application = StaticFilesHandler(get_wsgi_application())
