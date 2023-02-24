@@ -1,6 +1,7 @@
-from django.urls import path, include
-from . import views
+from django.urls import path
+from .views import StackoverflowAPI, getQuestions
 
 urlpatterns = [
-    path('search/', views.get_questions),
+    path('', StackoverflowAPI.search),
+    path('questions/', getQuestions, name='questions'),
 ]
