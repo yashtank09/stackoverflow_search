@@ -51,8 +51,8 @@ def getQuestions(req, page=1):
 
 # class based RestAPI view
 class SearchAPIView(APIView):
-    def get(self, request, format=None):
-        query = request.GET.get('q')
+    def get(self, request):
+        query = request.GET.get('q', 'XYZ error')
         page = request.GET.get('page', 1)
 
         # Check if the query is already cached
